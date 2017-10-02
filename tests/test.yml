@@ -3,4 +3,4 @@
   connection: docker
   remote_user: root
   roles:
-    - ansible-docker
+    - ansible-role-docker
