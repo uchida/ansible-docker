@@ -1,0 +1,45 @@
+---
+
+- name: packages related for APT with https are installed
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+
+- name: docker release key is registered
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: software-properties-common is installed for prerequisite for apt_repository ansible module
+  apt:
+    name: software-properties-common
+    state: present
+
+- name: docker apt repository is registered
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
+    filename: docker
+    state: present
+    mode: 0644
+    update_cache: yes
+  failed_when: ansible_distribution_release not in ['precise', 'trusty', 'wily', 'xenial']
+
+- name: lxc-docker is purged
+  apt:
+    name=lxc-docker
+    state=absent
+    purge=yes
+
+- name: linux-image-extra is installed
+  apt:
+    name: 'linux-image-extra-{{ ansible_kernel }}'
+    state: present
+  failed_when: ansible_distribution_release not in ['trusty', 'wily', 'xenial']
+
+- name: docker is installed
+  apt:
+    name: 'docker-ce={{ docker_ce_version }}'
+    state: present
