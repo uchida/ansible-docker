@@ -39,7 +39,7 @@
     state: present
   failed_when: ansible_distribution_release not in ['trusty', 'wily', 'xenial']
 
-- name: docker is installed
+- name: docker-ce is installed
   apt:
     name: 'docker-ce={{ docker_ce_version }}'
     state: present
