@@ -3,4 +3,4 @@
   connection: docker
   remote_user: root
   roles:
-    - uchida.docker
+    - ansible-docker
