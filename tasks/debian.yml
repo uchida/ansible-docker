@@ -11,7 +11,7 @@
 
 - name: docker release key is registered
   apt_key:
-    url: "https://download.docker.com/linux/{{ ansible_distribution }}/gpg"
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     state: present
 
 - name: software-properties-common is installed for prerequisite for apt_repository ansible module
@@ -21,7 +21,7 @@
 
 - name: docker apt repository is registered
   apt_repository:
-    repo: 'deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution }} {{ ansible_distribution_release }} stable'
+    repo: 'deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     filename: docker
     state: present
     mode: 0644
