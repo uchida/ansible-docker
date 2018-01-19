@@ -3,6 +3,13 @@ language: python
 
 env:
   - IMAGE=ubuntu TAG=xenial
+  - IMAGE=ubuntu TAG=artful
+  - IMAGE=debian TAG=jessie
+  - IMAGE=debian TAG=stretch
+  - IMAGE=centos TAG=7
+  - IMAGE=fedora TAG=24
+  - IMAGE=fedora TAG=27
+  - IMAGE=amazonlinux TAG=1
 
 dist: trusty
 sudo: required
@@ -13,8 +20,13 @@ before_install:
   - docker version
   - docker pull $IMAGE:$TAG
   - docker run --name test -di $IMAGE:$TAG /bin/sh
-  - docker exec test apt-get update
-  - docker exec test apt-get install -y python ca-certificates
+  - if [ "$IMAGE" = "ubuntu" -o "$IMAGE" = "debian" ]; then
+      docker exec test apt-get update;
+      docker exec test apt-get install -y python ca-certificates;
+    fi
+  - if [ "$IMAGE" = "centos" -o "$IMAGE" = "fedora" ]; then
+      docker exec test yum install -y python ca-certificates;
+    fi
 
 install:
   - pip install ansible
