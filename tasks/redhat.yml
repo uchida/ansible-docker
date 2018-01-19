@@ -1,0 +1,30 @@
+---
+
+- name: docker release key is registered
+  rpm_key:
+    key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    state: present
+
+- name: docker-ce yum repository is registered
+  get_url:
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/docker-ce.repo"
+    dest: /etc/yum.repos.d/docker-ce.repo
+    owner: root
+    group: root
+    mode: 0644
+  failed_when: ansible_distribution | lower not in ['centos', 'fedora']
+
+- name: remove old versions
+  yum:
+    name: lxc-docker
+    state: absent
+  with_items:
+    - docker
+    - docker-common
+    - docker-selinux
+    - docker-engine
+
+- name: docker-ce is installed
+  yum:
+    name: 'docker-ce-{{ docker_ce_version }}'
+    state: present
