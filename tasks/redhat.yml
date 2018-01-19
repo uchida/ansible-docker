@@ -14,7 +14,7 @@
     mode: 0644
   failed_when: ansible_distribution | lower not in ['centos', 'fedora']
 
-- name: remove old versions
+- name: remove old versions by yum
   yum:
     name: lxc-docker
     state: absent
@@ -23,8 +23,27 @@
     - docker-common
     - docker-selinux
     - docker-engine
+  when: ansible_distribution != "Fedora"
 
-- name: docker-ce is installed
+- name: remove old versions by dnf
+  dnf:
+    name: lxc-docker
+    state: absent
+  with_items:
+    - docker
+    - docker-common
+    - docker-selinux
+    - docker-engine
+  when: ansible_distribution == "Fedora"
+
+- name: docker-ce is installed by yum
   yum:
     name: 'docker-ce-{{ docker_ce_version }}'
     state: present
+  when: ansible_distribution != "Fedora"
+
+- name: docker-ce is installed by dnf
+  dnf:
+    name: 'docker-ce-{{ docker_ce_version }}'
+    state: present
+  when: ansible_distribution == "Fedora"
