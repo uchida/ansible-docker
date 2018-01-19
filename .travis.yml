@@ -6,6 +6,7 @@ env:
   - IMAGE=debian TAG=stretch
   - IMAGE=centos TAG=7
   - IMAGE=fedora TAG=26
+  - IMAGE=amazonlinux TAG=1
 
 dist: trusty
 sudo: required
