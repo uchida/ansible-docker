@@ -40,11 +40,6 @@
     state=absent
     purge=yes
 
-- name: linux-image-extra is installed
-  apt:
-    name: 'linux-image-extra-{{ ansible_kernel }}'
-    state: present
-
 - name: docker-ce is installed
   apt:
     name: 'docker-ce={{ docker_ce_version }}'
