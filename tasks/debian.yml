@@ -1,6 +1,6 @@
 ---
 
-- name: packages related for APT with https are installed
+- name: packages related to APT with https are installed
   apt:
     name: '{{ item }}'
     state: present
