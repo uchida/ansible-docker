@@ -28,10 +28,10 @@
     update_cache: yes
   failed_when: |
     (ansible_distribution == "ubuntu" and
-     ansible_distribution_release not in ['trusty', 'xenial', 'yakkety', 'zesty', 'artful'] or
+     ansible_distribution_release not in ['xenial', 'yakkety', 'zesty', 'artful'] or
      docker_ce_architecture not in ['amd64', 'armhf', 'ppc64le', 's390x']) and
     (ansible_distribution == "debian" and
-     ansible_distribution_release not in ['wheezy', 'jessie', 'stretch', 'buster'] or
+     ansible_distribution_release not in ['jessie', 'stretch'] or
      docker_ce_architecture not in ['amd64', 'armhf'])
 
 - name: lxc-docker is purged
