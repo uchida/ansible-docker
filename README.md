@@ -1,6 +1,11 @@
 uchida.docker
 =============
 
+[![Ansible Role](https://img.shields.io/ansible/role/20899.svg?maxAge=2592000)](https://galaxy.ansible.com/uchida/docker/)
+![Version](https://img.shields.io/github/tag/uchida/ansible-role-docker.svg)
+[![License](https://img.shields.io/github/license/uchida/ansible-role-docker.svg?maxAge=2592000)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
+[![Travis](https://img.shields.io/travis/uchida/ansible-role-docker.svg)](https://travis-ci.org/uchida/ansible-role-docker)
+
 ansible role to install docker CE, community edition
 
 Role Variables
