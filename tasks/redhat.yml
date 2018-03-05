@@ -40,10 +40,10 @@
   yum:
     name: 'docker-ce-{{ docker_ce_version }}'
     state: present
-  when: ansible_distribution != "Fedora"
+  when: not ansible_check_mode and ansible_distribution != "Fedora"
 
 - name: docker-ce is installed by dnf
   dnf:
     name: 'docker-ce-{{ docker_ce_version }}'
     state: present
-  when: ansible_distribution == "Fedora"
+  when: not ansible_check_mode and ansible_distribution == "Fedora"

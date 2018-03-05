@@ -44,3 +44,4 @@
   apt:
     name: 'docker-ce={{ docker_ce_version }}'
     state: present
+  when: not ansible_check_mode
