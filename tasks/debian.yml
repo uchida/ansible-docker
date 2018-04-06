@@ -4,7 +4,7 @@
   apt:
     name: '{{ item }}'
     state: present
-    update_cache: yes
+    update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
   with_items:
     - apt-transport-https
     - ca-certificates
@@ -25,7 +25,7 @@
     filename: docker
     state: present
     mode: 0644
-    update_cache: yes
+    update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
   failed_when: |
     (ansible_distribution == "ubuntu" and
      ansible_distribution_release not in ['xenial', 'yakkety', 'zesty', 'artful'] or
