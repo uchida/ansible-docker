@@ -4,3 +4,5 @@
   remote_user: root
   roles:
     - ansible-role-docker
+    - role: ansible-role-docker
+      docker_ce_channel: edge

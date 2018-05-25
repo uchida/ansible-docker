@@ -13,9 +13,11 @@ Role Variables
 
 ```
 docker_ce_version: '*'
+docker_ce_channel: 'stable'
 ```
 
-`docker_ce_version` is a variable to specify docker CE version, default is `*`, use available latest version.
+- `docker_ce_version` is a variable to specify docker CE version, default is `*`, use available latest version.
+- `docker_ce_channel` is a variable to specify docker CE release channel, default is `stable`, a choice of `['stable', 'edge', 'test']`
 
 Example Playbook
 ----------------
