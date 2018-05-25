@@ -1,3 +1,4 @@
 ---
 
 docker_ce_version: '*'
+docker_ce_channel: 'stable'

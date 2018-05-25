@@ -36,6 +36,12 @@
     - docker-engine
   when: ansible_distribution == "Fedora"
 
+- name: enable docker-ce-{{ docker_ce_channel }}
+  yum_repository:
+    name: docker-ce-{{ docker_ce_channel }}
+    enabled: yes
+  when: docker_ce_channel in ['edge', 'test']
+
 - name: docker-ce is installed by yum
   yum:
     name: 'docker-ce-{{ docker_ce_version }}'
