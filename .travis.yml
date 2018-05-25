@@ -2,6 +2,7 @@
 language: python
 
 env:
+  - IMAGE=ubuntu TAG=bionic
   - IMAGE=ubuntu TAG=xenial
   - IMAGE=ubuntu TAG=artful
   - IMAGE=debian TAG=jessie
