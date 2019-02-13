@@ -2,27 +2,24 @@ galaxy_info:
   author: Akihiro Uchida
   description: ansible role to install docker-ce
   license: CC0
-  min_ansible_version: 2.4
+  min_ansible_version: 2.7
   platforms:
   - name: Ubuntu
     versions:
     - xenial
-    - yakkety
-    - zesty
-    - artful
+    - bionic
+    - cosmic
   - name: Debian
     versions:
-    - jessie
     - stretch
+    - buster
   - name: EL
     versions:
     - 7
   - name: Fedora
     versions:
-    - 24
-    - 25
-    - 26
-    - 27
+    - 28
+    - 29
   galaxy_tags:
     - docker
 dependencies: []

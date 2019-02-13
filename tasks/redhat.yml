@@ -16,25 +16,31 @@
 
 - name: remove old versions by yum
   yum:
-    name: lxc-docker
+    name: "{{ packages }}"
     state: absent
-  with_items:
-    - docker
-    - docker-common
-    - docker-selinux
-    - docker-engine
-  when: ansible_distribution != "Fedora"
+  when:
+    ansible_distribution != "Fedora" or
+    (ansible_distribution == "CentOS" and ansible_distribution_major_version | int < 8)
+  vars:
+    packages:
+      - docker
+      - docker-common
+      - docker-selinux
+      - docker-engine
 
 - name: remove old versions by dnf
   dnf:
-    name: lxc-docker
+    name: "{{ packages }}"
     state: absent
-  with_items:
-    - docker
-    - docker-common
-    - docker-selinux
-    - docker-engine
-  when: ansible_distribution == "Fedora"
+  when:
+    ansible_distribution == "Fedora" or
+    (ansible_distribution == "CentOS" and ansible_distribution_major_version | int >= 8)
+  vars:
+    packages:
+      - docker
+      - docker-common
+      - docker-selinux
+      - docker-engine
 
 - name: enable docker-ce-{{ docker_ce_channel }}
   ini_file:
