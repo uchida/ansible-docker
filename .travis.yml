@@ -7,8 +7,8 @@ env:
   - IMAGE=debian TAG=jessie
   - IMAGE=debian TAG=stretch
   - IMAGE=centos TAG=7
-  - IMAGE=fedora TAG=24
-  - IMAGE=fedora TAG=27
+  - IMAGE=fedora TAG=28
+  - IMAGE=fedora TAG=29
   - IMAGE=amazonlinux TAG=1
 
 dist: trusty
