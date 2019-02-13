@@ -11,7 +11,7 @@ env:
   - IMAGE=fedora TAG=29
   - IMAGE=amazonlinux TAG=1
 
-dist: trusty
+dist: xenial
 sudo: required
 
 cache: pip
