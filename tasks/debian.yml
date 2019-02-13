@@ -2,12 +2,13 @@
 
 - name: packages related to APT with https are installed
   apt:
-    name: '{{ item }}'
+    name: '{{ packages }}'
     state: present
     update_cache: "{{ 'yes' if not ansible_check_mode | bool else 'no' }}"
-  with_items:
-    - apt-transport-https
-    - ca-certificates
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
 
 - name: docker release key is registered
   apt_key:
