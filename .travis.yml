@@ -3,9 +3,9 @@ language: python
 
 env:
   - IMAGE=ubuntu TAG=xenial
-  - IMAGE=ubuntu TAG=artful
-  - IMAGE=debian TAG=jessie
+  - IMAGE=ubuntu TAG=bionic
   - IMAGE=debian TAG=stretch
+  - IMAGE=debian TAG=buster
   - IMAGE=centos TAG=7
   - IMAGE=fedora TAG=28
   - IMAGE=fedora TAG=29

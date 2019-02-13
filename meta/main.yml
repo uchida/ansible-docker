@@ -7,22 +7,19 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
-    - yakkety
-    - zesty
-    - artful
+    - bionic
+    - cosmic
   - name: Debian
     versions:
-    - jessie
     - stretch
+    - buster
   - name: EL
     versions:
     - 7
   - name: Fedora
     versions:
-    - 24
-    - 25
-    - 26
-    - 27
+    - 28
+    - 29
   galaxy_tags:
     - docker
 dependencies: []
