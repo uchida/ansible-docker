@@ -42,15 +42,8 @@
     state=absent
     purge=yes
 
-- name: check docker package selection
-  command: dpkg --get-selections docker-ce
-  register: docker_selection
-  changed_when: false
-  check_mode: no
-
 - name: docker-ce is installed
   apt:
     name: 'docker-ce={{ docker_ce_version }}'
     state: present
   when: not ansible_check_mode or not docker_apt_repo.changed|default(true)
-  ignore_errors: ansible_check_mode and 'hold' in docker_selection.stdout
